@@ -19,12 +19,17 @@ public class Game2048 extends Game {
     }
 
     private void drawScene(){
-        for (int i = 0; i < gameField.length; i++){
-            for(int j = 0; j < gameField[i].length; j++){
-                setCellColor(j,i,Color.BLUE);
+        for (int y = 0; y < gameField.length; y++){
+            for(int x = 0; x < gameField[y].length; x++){
+                setCellColor(x,y,Color.BLUE);
             }
         }
+    }
 
+    private void createNewNumber(){
+       int x = getRandomNumber(SIDE);
+       int y = getRandomNumber(SIDE);
+       int number = getRandomNumber(10);
     }
 }
 //--module-path "C:\MyProjects\JavaRushTasks\lib\javafx-sdk-17.0.2\lib" --add-modules javafx.controls,javafx.fxml
