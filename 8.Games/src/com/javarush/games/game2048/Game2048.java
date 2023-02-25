@@ -11,9 +11,19 @@ public class Game2048 extends Game {
     public void initialize() {
         setScreenSize(SIDE ,SIDE);
         createGame();
+        drawScene();
     }
 
     private void createGame(){
+
+    }
+
+    private void drawScene(){
+        for (int i = 0; i < gameField.length; i++){
+            for(int j = 0; j < gameField[i].length; j++){
+                setCellColor(j,i,Color.BLUE);
+            }
+        }
 
     }
 }
