@@ -39,12 +39,13 @@ public class Game2048 extends Game {
             } else {
                 gameField[x][y] = 4;
             }
-        }else{
+        } else {
             createNewNumber();
         }
     }
-    private  Color getColorByValue(int value){
-        if(value == 0){
+
+    private Color getColorByValue(int value) {
+        if (value == 0) {
             return Color.WHITE;
         } else if (value == 2) {
             return Color.AZURE;
@@ -68,17 +69,34 @@ public class Game2048 extends Game {
             return Color.FUCHSIA;
         } else if (value == 2048) {
             return Color.LIME;
-        }else{
+        } else {
             return Color.NONE;
         }
     }
-    private void setCellColoredNumber(int x, int y, int value){
+
+    private void setCellColoredNumber(int x, int y, int value) {
         Color color = getColorByValue(value);
         String string = "";
-        if(value > 0){
+        if (value > 0) {
             string = value + "";
         }
         setCellValueEx(x, y, color, string);
+    }
+
+    private boolean compressRow(int[] row) {
+        int index = 0;
+        boolean result = false;
+        for (int x = 0; x < row.length; x++) {
+            if (row[x] > 0) {
+                if (x != index) {
+                    row[index] = row[x];
+                    row[x] = 0;
+                    result = true;
+                }
+                index++;
+            }
+        }
+        return result;
     }
 }
 //--module-path "C:\MyProjects\JavaRushTasks\lib\javafx-sdk-17.0.2\lib" --add-modules javafx.controls,javafx.fxml
