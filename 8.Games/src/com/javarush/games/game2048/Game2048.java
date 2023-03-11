@@ -115,17 +115,31 @@ public class Game2048 extends Game {
     public void onKeyPress(Key key) {
         if (key == Key.LEFT) {
             moveLeft();
+            drawScene();
         } else if (key == Key.RIGHT) {
             moveRight();
+            drawScene();
         } else if (key == Key.UP) {
             moveUp();
+            drawScene();
         } else if (key == Key.DOWN) {
             moveDown();
+            drawScene();
         }
+
     }
 
     private void moveLeft() {
+        boolean isMotion = false;
 
+        for (int[] ints : gameField) {
+            if (compressRow(ints) | mergeRow(ints) | compressRow(ints)) {
+                isMotion = true;
+            }
+        }
+        if(isMotion){
+            createNewNumber();
+        }
     }
 
     private void moveRight() {
