@@ -8,6 +8,7 @@ public class Game2048 extends Game {
 
     private static final int SIDE = 4;
     private int[][] gameField = new int[SIDE][SIDE];
+    private boolean isGameStopped = false;
 
     @Override
     public void initialize() {
@@ -30,6 +31,10 @@ public class Game2048 extends Game {
     }
 
     private void createNewNumber() {
+        int max = getMaxTileValue();
+        if(max == 2048){
+            win();
+        }
         int x = getRandomNumber(SIDE);
         int y = getRandomNumber(SIDE);
         int number = getRandomNumber(10);
@@ -174,6 +179,24 @@ public class Game2048 extends Game {
             }
         }
         gameField = newGameField;
+    }
+
+    private int getMaxTileValue() {
+        int max = gameField[0][0];
+        for (int i = 0; i < gameField.length; i++) {
+            for (int j = 0; j < gameField[i].length; j++) {
+                if (gameField[i][j] > max) {
+                    max = gameField[i][j];
+                }
+            }
+
+        }
+        return max;
+    }
+
+    private void win() {
+        isGameStopped = true;
+        showMessageDialog(Color.NONE, "Победа!Вы победитель!", Color.BLACK, 75);
     }
 }
 //--module-path "C:\MyProjects\JavaRushTasks\lib\javafx-sdk-17.0.2\lib" --add-modules javafx.controls,javafx.fxml
