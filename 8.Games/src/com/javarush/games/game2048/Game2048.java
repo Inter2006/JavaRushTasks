@@ -10,6 +10,7 @@ public class Game2048 extends Game {
     private int[][] gameField = new int[SIDE][SIDE];
     private boolean isGameStopped = false;
 
+
     @Override
     public void initialize() {
         setScreenSize(SIDE, SIDE);
@@ -32,7 +33,7 @@ public class Game2048 extends Game {
 
     private void createNewNumber() {
         int max = getMaxTileValue();
-        if(max == 2048){
+        if (max == 2048) {
             win();
         }
         int x = getRandomNumber(SIDE);
@@ -197,6 +198,21 @@ public class Game2048 extends Game {
     private void win() {
         isGameStopped = true;
         showMessageDialog(Color.NONE, "Победа!Вы победитель!", Color.BLACK, 75);
+    }
+
+    private boolean canUserMove() {
+        for (int i = 0; i < gameField.length; i++) {
+            for (int j = 0; j < gameField[i].length; j++) {
+                if (gameField[i][j] == 0) {
+                    return true;
+                } else if (j < gameField[i].length - 1 && gameField[i][j] == gameField[i][j + 1]) {
+                    return true;
+                } else if (i < gameField.length - 1 && gameField[i][j] == gameField[i + 1][j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
 //--module-path "C:\MyProjects\JavaRushTasks\lib\javafx-sdk-17.0.2\lib" --add-modules javafx.controls,javafx.fxml
