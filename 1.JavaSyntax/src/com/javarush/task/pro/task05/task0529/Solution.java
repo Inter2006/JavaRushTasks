@@ -33,20 +33,21 @@ public class Solution {
                 }
             }
         }
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if(robotank.equals(field[i][j])&& bombs[i][j] == 1){
+                    field[i][j] = hit;
+                }
+            }
+        }
 
-        for (int i = 0; i < bombs.length; i++) {
-            for (int j = 0; j < bombs[i].length; j++) {
-                System.out.print(bombs[i][j]);
+
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field[i].length; j++) {
+                System.out.print(field[i][j]);
             }
             System.out.println();
         }
-
-//        for (int i = 0; i < field.length; i++) {
-//            for (int j = 0; j < field[i].length; j++) {
-//                System.out.print(field[i][j]);
-//            }
-//            System.out.println();
-//        }
     }
 
 }
