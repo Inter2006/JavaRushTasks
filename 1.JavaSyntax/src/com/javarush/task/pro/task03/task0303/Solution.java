@@ -1,4 +1,4 @@
-package com.javarush.task.pro.task03.task0303;
+//package com.javarush.task.pro.task03.task0303;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ import java.util.Scanner;
 Школа или институт
 */
 
-public class Solution {
+/*public class Solution {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int age = scanner.nextInt();
@@ -19,4 +19,4 @@ public class Solution {
                 System.out.println("пора в институт");
             }
         }
-    }
+    }*/
